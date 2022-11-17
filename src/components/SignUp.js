@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 export const SignUp = () => {
+  const navigation = useNavigate();
+
   const [username, setUserName] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
+  const [user, setUser] = useState();
 
   const [error, setError] = useState({
     username: "",
@@ -25,6 +30,26 @@ export const SignUp = () => {
     }
     if (password != confirmPassword) {
       alert("Confirm password is Not Matched");
+    } else {
+      const formData = { username, email, password };
+      console.log("formDat", formData);
+      fetch("http://localhost:9090/api/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.code == 200) {
+            toast.success(data.message);
+            navigation("/login");
+          } else {
+            toast.error(data.message);
+          }
+        })
+        .catch((err) => {
+          toast.error(err);
+        });
     }
   }
 
@@ -82,6 +107,18 @@ export const SignUp = () => {
           Already registered <a href="/login">Login?</a>
         </p>
       </form>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };

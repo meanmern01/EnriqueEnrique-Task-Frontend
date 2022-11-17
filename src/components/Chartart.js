@@ -20,7 +20,7 @@ const piedata = {
     {
       label: "My First dataset",
       backgroundColor: "rgb(255, 99, 132)",
-      borderColor: "rgb(0,0,255)",
+      borderColor: "rgb(99,0,132)",
       data: [0, 10, 5, 2, 20, 30, 45],
     },
   ],
@@ -30,14 +30,14 @@ export const Chartart = () => {
   return (
     <div>
       <div className="chart-div">
-        <div>
+        <div className="chart-1">
           <Pie data={piedata} />
         </div>
-        <div>
-          <Bar data={data} />
+        <div className="chart-2">
+          <Bar data={data} className="bar-chart" />
         </div>
-        <div>
-          <Line data={data} />
+        <div className="chart-3">
+          <Line data={data} className="line-chart" />
         </div>
       </div>
     </div>

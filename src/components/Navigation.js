@@ -10,10 +10,7 @@ function Navigation() {
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
-            <h6>username</h6>
-          </Navbar.Text>
-
-          <Navbar.Text>
+            <h6>Welcome,username</h6>
             <a href="#login">logout</a>
           </Navbar.Text>
         </Navbar.Collapse>

@@ -305,10 +305,45 @@ html,
   display: flex;
   align-items: center;
 }
+/* ------------navigation page------ */
 
 /* ------------chart page------ */
 .chart-div {
   display: flex;
   justify-content: space-between;
-  margin-left: 25%;
+  margin-left: 23%;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+.chart-1 {
+  background-color: white;
+  padding: 15px;
+  border: 1px solid black;
+}
+.chart-2 {
+  background-color: white;
+  padding: 15px;
+  border: 1px solid black;
+}
+.chart-3 {
+  background-color: white;
+  padding: 15px;
+  border: 1px solid black;
+}
+canvas.bar-chart {
+  height: 300px !important;
+  width: 300px !important;
+  object-fit: contain;
+}
+canvas.line-chart {
+  height: 300px !important;
+  width: 300px !important;
+  object-fit: contain;
+}
+/* ------------Tabular page------ */
+.main-div-tabular {
+  width: 77%;
+  margin-left: 23%;
+  background-color: white;
+  margin-top: 20px;
 }

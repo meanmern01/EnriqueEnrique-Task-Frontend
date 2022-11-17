@@ -1,8 +1,35 @@
 import React, { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 export const Login = () => {
+  const navigation = useNavigate();
+
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+
+  function login(e) {
+    e.preventDefault();
+    fetch("http://localhost:9090/api/signin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userInput: email, password }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.code == 200) {
+          toast.success(data.message);
+          localStorage.setItem("token", JSON.stringify(data.token));
+
+          <Navigate to="/dashboard" replace />;
+        } else {
+          toast.error(data.message);
+        }
+      })
+      .catch((err) => {
+        toast.error(err);
+      });
+  }
 
   return (
     <div className="form-center">
@@ -28,7 +55,7 @@ export const Login = () => {
           />
         </div>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary" onClick={login}>
             Login
           </button>
         </div>
@@ -36,6 +63,18 @@ export const Login = () => {
           Already registered <a href="/">sign Up?</a>
         </p>
       </form>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };
