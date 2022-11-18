@@ -18,12 +18,16 @@ export const Login = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.code == 200) {
-          toast.success(data.message);
+          toast.success(data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+          localStorage.setItem("username", JSON.stringify(data.user.username));
           localStorage.setItem("token", JSON.stringify(data.token));
-
-          <Navigate to="/dashboard" replace />;
+          navigation("/dashboard");
         } else {
-          toast.error(data.message);
+          toast.error(data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
         }
       })
       .catch((err) => {
@@ -63,18 +67,6 @@ export const Login = () => {
           Already registered <a href="/">sign Up?</a>
         </p>
       </form>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
     </div>
   );
 };

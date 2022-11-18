@@ -32,7 +32,7 @@ export const SignUp = () => {
       alert("Confirm password is Not Matched");
     } else {
       const formData = { username, email, password };
-      console.log("formDat", formData);
+
       fetch("http://localhost:9090/api/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -41,10 +41,14 @@ export const SignUp = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.code == 200) {
-            toast.success(data.message);
+            toast.success(data.message, {
+              position: toast.POSITION.TOP_RIGHT,
+            });
             navigation("/login");
           } else {
-            toast.error(data.message);
+            toast.error(data.message, {
+              position: toast.POSITION.TOP_RIGHT,
+            });
           }
         })
         .catch((err) => {
@@ -107,18 +111,6 @@ export const SignUp = () => {
           Already registered <a href="/login">Login?</a>
         </p>
       </form>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
     </div>
   );
 };

@@ -1,17 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Table from "react-bootstrap/Table";
 
-export const TabularData = () => {
+const TableData = ({ tableData }) => {
   return (
     <div className="main-div-tabular">
-      <h1>Tabular Data</h1>
-      <table className="table-tabular">
+      <Table striped bordered hover size="sm">
         <thead>
-          <th></th>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>description</th>
+            <th>price</th>
+            <th>discountpercentage </th>
+            <th>rating</th>
+            <th>stock</th>
+            <th>brand</th>
+            <th>category</th>
+            <th>thumbnail</th>
+            <th>month</th>
+            <th>soldquantity</th>
+          </tr>
         </thead>
         <tbody>
-          <td></td>
+          {tableData.map((data, index) => {
+            return (
+              <tr id={index}>
+                <td>{data.title}</td>
+                <td>{data.description}</td>
+                <td>{data.price}</td>
+                <td>{data.discountpercentage}</td>
+                <td>{data.rating}</td>
+                <td>{data.stock}</td>
+                <td>{data.brand}</td>
+                <td>{data.category}</td>
+                <td>{data.thumbnail}</td>
+                <td>{data.month}</td>
+                <td>{data.soldquantity}</td>
+              </tr>
+            );
+          })}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 };
+
+export default TableData;

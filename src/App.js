@@ -9,9 +9,12 @@ import {
 import { SignUp } from "./components/SignUp";
 import { Login } from "./components/Login";
 import { Dashboard } from "./components/Dashboard";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const ProtectedRoute = ({ token, children }) => {
+  const ProtectedRoute = ({ children }) => {
+    const token = localStorage.getItem("token");
     if (!token) {
       return <Navigate to="/" replace />;
     }
@@ -50,12 +53,13 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              <ProtectedRoute token={localStorage.getItem("token")}>
+              <ProtectedRoute>
                 <Dashboard />
               </ProtectedRoute>
             }
           />
         </Routes>
+        <ToastContainer />
       </Router>
     </div>
   );

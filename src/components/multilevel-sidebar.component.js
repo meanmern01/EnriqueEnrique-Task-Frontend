@@ -57,35 +57,7 @@ const MultilevelSidebar = (props) => {
   };
 
   const renderSecondChildren = (parent, list) => {
-    return (
-      <SidebarContent
-        {...props}
-        sidebarProps={{
-          className: classNames("sidebar-main second", {
-            show: activeTab.includes(list.id),
-            [wrapperClassName]: wrapperClassName,
-          }),
-          style: { height: getParentHeight() },
-        }}
-        headerContent={
-          <Fragment>
-            <div className="first-back-btn" onClick={() => handleBackClick()}>
-              <AngleLeft />
-              <span>{parent.title}</span>
-            </div>
-            <div
-              className="second-back-btn"
-              onClick={() => handleBackClick(list)}
-            >
-              <AngleLeft />
-              <span>{list.title}</span>
-            </div>
-          </Fragment>
-        }
-        options={list.children}
-        handleTabClick={handleTabClick}
-      />
-    );
+    return <SidebarContent setFilterData={props.setFilterData} />;
   };
 
   const renderFirstChildren = (list) => {
@@ -121,6 +93,7 @@ const MultilevelSidebar = (props) => {
         className={classNames("sidebar-backdrop", { show: open })}
         onClick={handleBackdropClick}
       />
+
       <SidebarContent
         {...props}
         sidebarProps={{
