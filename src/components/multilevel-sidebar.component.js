@@ -1,5 +1,5 @@
-import React, { useState, Fragment } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
+
 import classNames from "classnames";
 
 // import "./multilevel-sidebar.styles.scss";

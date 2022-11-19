@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Menu from "./Menu";
 import MultilevelSidebar from "./multilevel-sidebar.component";
-import { AiOutlineMenu } from "react-icons/ai";
 
 import Navigation from "./Navigation";
 import { Chartart } from "./Chartart";
@@ -11,11 +10,11 @@ import LoadingSpinner from "./Loader";
 
 export const Dashboard = () => {
   const [open, setOpen] = useState(true);
-  const [filterData, setFilterData] = useState();
-  const [tableData, setTableData] = useState();
+  const [filterData, setFilterData] = useState([]);
+  const [tableData, setTableData] = useState([]);
   const token = JSON.parse(localStorage.getItem("token"));
   const getData = () => {
-    fetch("http://localhost:9090/api/getproducts", {
+    fetch("http://enrique-backend-api.herokuapp.com/api/getproducts", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -31,10 +30,11 @@ export const Dashboard = () => {
   useEffect(() => {
     getData();
   }, []);
+
   useEffect(() => {
-    console.log(tableData);
     filterData && setTableData(filterData);
   }, [filterData]);
+
   return (
     <div>
       <MultilevelSidebar
@@ -42,7 +42,7 @@ export const Dashboard = () => {
         options={Menu}
         setFilterData={setFilterData}
         // onToggle={handleSidebarToggle}
-        header="Hey"
+        header=""
       />
 
       <div>

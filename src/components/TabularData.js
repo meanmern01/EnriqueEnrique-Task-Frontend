@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Table from "react-bootstrap/Table";
 
 const TableData = ({ tableData }) => {
@@ -7,7 +7,6 @@ const TableData = ({ tableData }) => {
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
-            <th>#</th>
             <th>Title</th>
             <th>description</th>
             <th>price</th>
@@ -22,7 +21,7 @@ const TableData = ({ tableData }) => {
           </tr>
         </thead>
         <tbody>
-          {tableData.map((data, index) => {
+          {tableData?.map((data, index) => {
             return (
               <tr id={index}>
                 <td>{data.title}</td>
@@ -33,7 +32,9 @@ const TableData = ({ tableData }) => {
                 <td>{data.stock}</td>
                 <td>{data.brand}</td>
                 <td>{data.category}</td>
-                <td>{data.thumbnail}</td>
+                <td>
+                  <img src={data.thumbnail} alt="" />
+                </td>
                 <td>{data.month}</td>
                 <td>{data.soldquantity}</td>
               </tr>

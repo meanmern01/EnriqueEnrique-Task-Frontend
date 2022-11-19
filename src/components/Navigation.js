@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ function Navigation() {
     JSON.parse(localStorage.getItem("username"))
   );
   const logout = () => {
-    fetch("http://localhost:9090/api/logout", {
+    fetch("http://enrique-backend-api.herokuapp.com/api/logout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -18,7 +18,7 @@ function Navigation() {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.code == "200") {
+        if (data.code === "200") {
           localStorage.removeItem("token");
           navigation("/login");
         }
@@ -35,7 +35,7 @@ function Navigation() {
       }}
     >
       <Container>
-        <Navbar.Brand href="#home">Navbar with text</Navbar.Brand>
+        {/* <Navbar.Brand href="#home">Navbar with text</Navbar.Brand> */}
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
