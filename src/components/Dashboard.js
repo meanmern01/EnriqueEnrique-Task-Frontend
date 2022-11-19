@@ -14,7 +14,7 @@ export const Dashboard = () => {
   const [tableData, setTableData] = useState([]);
   const token = JSON.parse(localStorage.getItem("token"));
   const getData = () => {
-    fetch("http://enrique-backend-api.herokuapp.com/api/getproducts", {
+    fetch("https://enrique-backend-api.herokuapp.com/api/getproducts", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

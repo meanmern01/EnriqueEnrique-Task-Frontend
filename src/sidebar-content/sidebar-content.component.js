@@ -105,7 +105,7 @@ const SidebarContent = (props) => {
           <button
             className="btn btn-outline-success"
             onClick={() => {
-              fetch("http://enrique-backend-api.herokuapp.com/api/filter", {
+              fetch("https://enrique-backend-api.herokuapp.com/api/filter", {
                 method: "POST",
                 body: JSON.stringify({
                   price: priceValue,

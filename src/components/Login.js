@@ -10,7 +10,7 @@ export const Login = () => {
 
   function login(e) {
     e.preventDefault();
-    fetch("http://enrique-backend-api.herokuapp.com/api/signin", {
+    fetch("https://enrique-backend-api.herokuapp.com/api/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userInput: email, password }),

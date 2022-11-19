@@ -33,7 +33,7 @@ export const SignUp = () => {
     } else {
       const formData = { username, email, password };
 
-      fetch("http://enrique-backend-api.herokuapp.com/api/signup", {
+      fetch("https://enrique-backend-api.herokuapp.com/api/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

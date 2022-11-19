@@ -9,7 +9,7 @@ function Navigation() {
     JSON.parse(localStorage.getItem("username"))
   );
   const logout = () => {
-    fetch("http://enrique-backend-api.herokuapp.com/api/logout", {
+    fetch("https://enrique-backend-api.herokuapp.com/api/logout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -18,8 +18,11 @@ function Navigation() {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.code === "200") {
+        console.log(data, "Assss");
+        if (data.code == 200) {
+          console.log("All Done");
           localStorage.removeItem("token");
+
           navigation("/login");
         }
       })
